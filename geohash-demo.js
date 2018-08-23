@@ -11,6 +11,7 @@ else
 	var key = "ABQIAAAAS-9BXlmhAxzk5tMQ6009tBSuPyGFyYqpbBL0yyePbwJ9Yzj2TRSRG70K1wsky3JHARggI0ccbJ3Y0A";
 
 GScript('http://maps.google.com/maps?file=api&amp;v=2&amp;key=' + key);
+// GScript('http://api.map.baidu.com/api?v=2.0&ak=h6cyBnnYiZu29umTnC1TcHLDPcZC38Yo');
 GScript('./geohash.js');
 GScript('./labeledmarker.js');
 
@@ -71,6 +72,8 @@ GeoHashBox.prototype.showNeighbors = function () {
 	this.neighbors.topright = new GeoHashBox(calculateAdjacent(this.neighbors.right.geohash, 'top'));
 	this.neighbors.bottomright = new GeoHashBox(calculateAdjacent(this.neighbors.right.geohash, 'bottom'));
 	this.neighbors.bottomleft = new GeoHashBox(calculateAdjacent(this.neighbors.left.geohash, 'bottom'));
+
+	return this.neighbors;
 }
 
 GeoHashBox.prototype.plot = function () {
@@ -96,6 +99,7 @@ function GeoHashBox (geohash) {
 	this.corners.bottomleft = new GLatLng(this.box.latitude[0], this.box.longitude[1]);
 	this.centerPoint = new GLatLng((this.box.latitude[0] + this.box.latitude[1])/2, (this.box.longitude[0] + this.box.longitude[1])/2);
 
+
 	this.options = {labelText : geohash};
 	var lastChr = this.geohash.charAt(this.geohash.length-1);
 	this.selfPos = BASE32.indexOf(lastChr);
@@ -107,8 +111,12 @@ function geocodeAddress () {
 	var address = document.getElementById("address").value;
 	var geocoder = new GClientGeocoder();
 	geocoder.getLatLng(address, plotGeoHash);
+	// GeoHashBox.showNeighbors();
+	// console.log(geocoder.getLatLng(address, plotGeoHash));
 }
-
+function test(){
+	geoHashBox.showNeighbors();
+}
 function plotGeoHash (gLatLng) {
 	if (gLatLng==null) {
 		setText('boxList', 'Location not found!');
@@ -157,7 +165,7 @@ function plotGeoHash (gLatLng) {
 
 function setText(s,t) {
 	sp = document.getElementById(s);
-  sp.innerHTML = t;
+  	sp.innerHTML = t;
 }
 
 function cleanUp() {

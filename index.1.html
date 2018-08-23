@@ -4,29 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 
-  <title>geohash demonstrator</title>
-   <script src="./geohash.js" type="text/javascript"/>
-<style>
-body {
-  font-family: 'Helvetica';
-  font-weight: Bold;
-  color: white;
-  margin: 0px;
-  padding: 0px;
-}
-input {
-  font-family: 'Helvetica';  
-  font-weight: Normal;
-}
-.LabeledMarker_markerLabel {
-  color: white;
-  font-size: 13px;
-  font-family: 'Helvetica';
-  text-transform: uppercase;
-}
-a {color: #3199ee;text-decoration:none} a:hover {color:#fa0;}a img{border: 0;}
-</style>
+  <script src="./geohash-demo.js" type="text/javascript"></script>
+  <style>
+    body {
+      font-family: 'Helvetica';
+      font-weight: Bold;
+      color: white;
+      margin: 0px;
+      padding: 0px;
+    }
+    input {
+      font-family: 'Helvetica';  
+      font-weight: Normal;
+    }
+    .LabeledMarker_markerLabel {
+      color: white;
+      font-size: 13px;
+      font-family: 'Helvetica';
+      text-transform: uppercase;
+    }
+    a {color: #3199ee;text-decoration:none} a:hover {color:#fa0;}a img{border: 0;}
+    </style>
 </head>
 <body>
   <div style="background: #000; height: 90px; padding: 15px;" id="header">
@@ -42,14 +42,15 @@ a {color: #3199ee;text-decoration:none} a:hover {color:#fa0;}a img{border: 0;}
 </select>
     
     <input type="button" value="plot" onClick="geocodeAddress();">
+    <input type="button" value="plot111" onClick="test();">
     <input type="button" value="clear" onClick="cleanUp();">
     <div id="boxList"></div>
     <div id="searchInfo"></div>
   </div>
-  <div style="position:absolute; top:15px; width: 150px; text-align:right;" id="credits">
+  <!-- <div style="position:absolute; top:15px; width: 150px; text-align:right;" id="credits">
     <a href="http://github.com/davetroy/geohash-js/tree/master" target="new">source code</a><br>
     &copy; 2008 David Troy
-  </div>
+  </div> -->
   <div id="map"/>
 </body>
 </html>
